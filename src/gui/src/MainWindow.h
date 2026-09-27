@@ -201,5 +201,6 @@ private slots:
     void comboServerList_currentIndexChanged(QString );
     void on_m_pButtonReload_clicked();
     void installBonjour();
+    void cmd_app_error(QProcess::ProcessError error);
 
 };
