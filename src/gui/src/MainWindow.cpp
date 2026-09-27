@@ -634,6 +634,7 @@ void MainWindow::start_cmd_app()
     if (desktopMode)
     {
         connect(cmd_app_process_, QOverload<int, QProcess::ExitStatus>::of(&QProcess::finished), this, &MainWindow::cmd_app_finished);
+        connect(cmd_app_process_, &QProcess::errorOccurred, this, &MainWindow::cmd_app_error);
         connect(cmd_app_process_, &QProcess::readyReadStandardOutput, this, &MainWindow::logOutput);
         connect(cmd_app_process_, &QProcess::readyReadStandardError, this, &MainWindow::logError);
     }
