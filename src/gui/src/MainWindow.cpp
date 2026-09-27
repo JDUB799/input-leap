@@ -1458,3 +1458,11 @@ void MainWindow::showLogWindow()
 {
     m_pLogWindow->show();
 }
+
+void MainWindow::cmd_app_error(QProcess::ProcessError error)
+{
+    appendLogError(QString("InputLeap backend process error: %1").arg(error));
+    m_ExpectedRunningState = kStopped;
+    stopDesktop();
+    set_connection_state(AppConnectionState::DISCONNECTED);
+}
